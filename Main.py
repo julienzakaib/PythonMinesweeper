@@ -3,17 +3,41 @@ import Exceptions
 
 from Board  import Board
 from Cell   import Cell
+
+# Player Classes
 from RandomBot import RandomBot
+from HumanPlayer import HumanPlayer
+from MinesweeperAi import MinesweeperAi
 
 # Game Config
-size = 5
-nMines = 2
+size = 10
+nMines = 16
 
-# Instanciate your Bot here
-player = RandomBot()
+######################
+# Instanciate Player #
+######################
+
+#
+# Your Ai Bot 
+#
+# player = MinesweeperAi()
+
+#
+# Random Ai 
+#
+# player = RandomBot()
+
+#
+# Default Humain Player
+#
+player = HumanPlayer()
 
 # Instanciate Minesweeper Board
 minesweeper = Board(size, nMines)
+
+##############
+# Start Game #
+##############
 
 first_turn = True
 
@@ -23,7 +47,7 @@ print("========================")
 minesweeper.show()
 print("========================")
 
-# Start Game
+# Game Loop
 while True:
 
     try:
@@ -44,7 +68,6 @@ while True:
 
         # Apply Action
         # Result is Boolean : True = blew up a mine , False = you're fine
-        # todo : improve this - maybe raise exception?
         try:
             minesweeper.player_action(target_cell, is_flag, first_turn)
 

@@ -165,7 +165,8 @@ class Board(tuple):
 
     # Toggles state of cell from/to Hidden and Flag
     def toggle_flag(self, cell):
-        cell.state = State.Flag if cell.state == State.Hidden else State.Hidden
+
+        cell.visibility = State.Flag if cell.is_hidden() else State.Hidden
 
     # Applies a player action
     # @param <Cell|tuple> target : either a Cell instance or a tuple of form (row, column)

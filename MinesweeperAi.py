@@ -19,7 +19,7 @@ class MinesweeperAi(Bot):
     #
     # @param <Board> board : 2 dimensional tuple of Cell objects
     # IMPORTANT : no cheating ! There are methods on the Cell class which would allow you to know the
-    # internal state of the cell (such as the fact that it is a mine, empty or a number)
+    # internal state of the cell (such as the fact that it is a mine, empty or a number), they are "reserved" for the Board
     def get_move(self, board):
 
         # Set index bounds
@@ -31,11 +31,11 @@ class MinesweeperAi(Bot):
             target = random.randint(min_value, max_value), random.randint(min_value, max_value)
             return target, False
 
-        #########################################################
-        #
-        # Examples for how to work with the Board and Cell classes
-        #
-        #########################################################
+        #############################################################
+        #															#
+        # Examples for how to work with the Board and Cell classes  #
+        #															#
+        #############################################################
 
         # Get all hidden cells
         hidden = [cell for row in board for cell in row if cell.is_hidden()]
@@ -55,10 +55,10 @@ class MinesweeperAi(Bot):
         # cell.is_empty()
         # cell.is_mine() -> technically I don't think you should ever use this
         #
-        # Because these methods will tell you if a Cell is in that specific State regardless of weather you should know
+        # Because these methods will tell you if a Cell is in that specific State regardless of wether you should know
         # or not (for example, if a cell containing a Number is still Hidden, calling cell.is_number() will return True)
         #
-        # Another way of getting a cell's state is by calling cell.get_state() which returns a State but will not tell
+        # Another way (prefered way) of getting a cell's state is by calling cell.get_state() which returns a State but will not tell
         # you the actual State (Number, Empty or Mine) unless the Cell's _visibility is Visible.
         # You can then compare this returned State to State.Hidden, State.Number, etc...
         #
